@@ -1,7 +1,7 @@
-package com.loiane;
+package com.ezequiel;
 
-import com.loiane.model.Course;
-import com.loiane.repository.CourseRepository;
+import com.ezequiel.model.Course;
+import com.ezequiel.repository.CourseRepository;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

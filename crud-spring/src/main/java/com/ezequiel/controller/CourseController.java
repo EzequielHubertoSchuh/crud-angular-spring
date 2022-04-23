@@ -1,9 +1,9 @@
-package com.loiane.controller;
+package com.ezequiel.controller;
 
 import java.util.List;
 
-import com.loiane.model.Course;
-import com.loiane.repository.CourseRepository;
+import com.ezequiel.model.Course;
+import com.ezequiel.repository.CourseRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

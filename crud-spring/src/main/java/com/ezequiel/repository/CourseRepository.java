@@ -1,6 +1,6 @@
-package com.loiane.repository;
+package com.ezequiel.repository;
 
-import com.loiane.model.Course;
+import com.ezequiel.model.Course;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
