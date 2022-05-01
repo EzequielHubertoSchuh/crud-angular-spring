@@ -38,8 +38,8 @@ public class SwaggerConfig {
     private ApiInfo metaInfo() {
 
         ApiInfo apiInfo = new ApiInfo(
-                "Cursos API REST",
-                "API REST de Angular e Spring - CRUD de Cursos.",
+                "Courses API REST",
+                "API REST de Angular e Spring - CRUD de Courses.",
                 "1.0",
                 "Terms of Service",
                 new Contact("Ezequiel Schuh", "https://www.linkedin.com/in/ezequielschuh/",

@@ -22,50 +22,50 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequestMapping("/api/courses")
 @AllArgsConstructor
-@Api(value = "API REST Cursos")
+@Api(value = "API REST COURSES")
 public class CourseController {
 
     @Autowired
     CourseRepository courseRepository;
 
-    @ApiOperation(value = "Retorna uma lista de Cursos")
+    @ApiOperation(value = "Returns a list of courses")
     @GetMapping
-    public ResponseEntity<List<Course>> list() {
+    public ResponseEntity<List<Course>> listAll() {
         List<Course> courseList = courseRepository.findAll();
         if (courseList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             for (Course course : courseList) {
                 long id = course.getId();
-                course.add(linkTo(methodOn(CourseController.class).listaCursoUnico(id)).withSelfRel());
+                course.add(linkTo(methodOn(CourseController.class).singleCourse(id)).withSelfRel());
             }
             return new ResponseEntity<List<Course>>(courseList, HttpStatus.OK);
         }
     }
 
-    @ApiOperation(value = "Retorna um curso unico")
+    @ApiOperation(value = "Returns a single course")
     @GetMapping("/{id}")
-    public ResponseEntity<Course> listaCursoUnico(@PathVariable(value = "id") long id) {
+    public ResponseEntity<Course> singleCourse(@PathVariable(value = "id") long id) {
         Optional<Course> courseO = Optional.ofNullable(courseRepository.findById(id));
         if (!courseO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            courseO.get().add(linkTo(methodOn(CourseController.class).list()).withRel("Lista de cursos"));
+            courseO.get().add(linkTo(methodOn(CourseController.class).listAll()).withRel("Lista de cursos"));
             return new ResponseEntity<Course>(courseO.get(), HttpStatus.OK);
         }
     }
 
-    @ApiOperation(value = "Salva um curso")
+    @ApiOperation(value = "Save a course")
     @Transactional
     @PostMapping
-    public ResponseEntity<Course> salvaCurso(@RequestBody @Validated Course course) {
+    public ResponseEntity<Course> saveCourse(@RequestBody @Validated Course course) {
         return new ResponseEntity<Course>(courseRepository.save(course), HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "Deleta um curso")
+    @ApiOperation(value = "Delete a course")
     @Transactional
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletaCurso(@PathVariable(value = "id") long id){
+    public ResponseEntity<?> deleteCourse(@PathVariable(value = "id") long id){
         Optional<Course> courseO = Optional.ofNullable(courseRepository.findById(id));
         if (!courseO.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -75,10 +75,10 @@ public class CourseController {
         }
     }
 
-    @ApiOperation(value = "Atualiza um curso")
+    @ApiOperation(value = "Update a course")
     @Transactional
     @PutMapping("/{id}")
-    public ResponseEntity<Course> updateProduto(@PathVariable(value="id") long id,
+    public ResponseEntity<Course> updateCourse(@PathVariable(value="id") long id,
                                                       @RequestBody @Validated Course course) {
         Optional<Course> courseO = Optional.ofNullable(courseRepository.findById(id));
         if(!courseO.isPresent()) {
