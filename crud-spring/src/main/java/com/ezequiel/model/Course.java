@@ -9,11 +9,14 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
+
+import java.io.Serializable;
 
 @Data
 @Entity
 //@Table(name = "cursos")
-public class Course {
+public class Course extends RepresentationModel<Course> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
