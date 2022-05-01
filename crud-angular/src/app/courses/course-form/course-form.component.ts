@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Action } from 'rxjs/internal/scheduler/Action';
 import { CoursesService } from './../services/courses.service';
 
 @Component({
@@ -30,9 +29,11 @@ export class CourseFormComponent implements OnInit {
     .subscribe(  (result) => console.log(result), (error) => { this.onError();});
   }
 
-  onCancel() {}
+  onCancel() {
+
+  }
 
   private onError() {
-    this.snackBar.open('Erro ao salvar curso.', '', { duration: 3000 });
+    this.snackBar.open('Error saving cursor.', '', { duration: 3000 });
   }
 }
