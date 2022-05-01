@@ -1,21 +1,19 @@
 package com.ezequiel.controller;
 
-import java.awt.*;
-import java.util.List;
-import java.util.Optional;
-
 import com.ezequiel.model.Course;
 import com.ezequiel.repository.CourseRepository;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import lombok.AllArgsConstructor;
+import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -58,12 +56,14 @@ public class CourseController {
     }
 
     @ApiOperation(value = "Salva um curso")
+    @Transactional
     @PostMapping
     public ResponseEntity<Course> salvaCurso(@RequestBody @Validated Course course) {
         return new ResponseEntity<Course>(courseRepository.save(course), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Deleta um curso")
+    @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletaCurso(@PathVariable(value = "id") long id){
         Optional<Course> courseO = Optional.ofNullable(courseRepository.findById(id));
@@ -76,6 +76,7 @@ public class CourseController {
     }
 
     @ApiOperation(value = "Atualiza um curso")
+    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateProduto(@PathVariable(value="id") long id,
                                                       @RequestBody @Validated Course course) {
