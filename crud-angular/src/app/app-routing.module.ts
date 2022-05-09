@@ -1,3 +1,4 @@
+import { CoursesComponent } from './courses/courses/courses.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'home', component: HomeComponent
+  },
+  {
+    path: 'courses/:id', component: CoursesComponent
   }
 ];
 
