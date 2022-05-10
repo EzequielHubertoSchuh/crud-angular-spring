@@ -1,6 +1,4 @@
-package com.ezequiel.repository;
-
-import com.ezequiel.model.Course;
+package com.ezequiel.course;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

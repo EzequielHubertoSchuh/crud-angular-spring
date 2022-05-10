@@ -1,17 +1,15 @@
-package com.ezequiel.model;
+package com.ezequiel.course;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Entity
-@Table(name = "person")
-public class Person {
-
+@Table(name = "course")
+public class Course extends RepresentationModel<Course> {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,5 +19,5 @@ public class Person {
 
     @Column(length = 10, nullable = false)
     private String category;
-}
 
+}

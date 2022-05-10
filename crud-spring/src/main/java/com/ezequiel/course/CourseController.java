@@ -1,7 +1,5 @@
-package com.ezequiel.controller;
+package com.ezequiel.course;
 
-import com.ezequiel.model.Course;
-import com.ezequiel.repository.CourseRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -22,7 +20,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequestMapping("/api/courses")
 @AllArgsConstructor
-@Api(value = "API REST COURSES")
+@Api(value = "API REST-FULL")
 public class CourseController {
 
     @Autowired
@@ -50,7 +48,7 @@ public class CourseController {
         if (!courseO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            courseO.get().add(linkTo(methodOn(CourseController.class).listAll()).withRel("Lista de cursos"));
+            courseO.get().add(linkTo(methodOn(CourseController.class).listAll()).withRel("List of courses"));
             return new ResponseEntity<Course>(courseO.get(), HttpStatus.OK);
         }
     }
