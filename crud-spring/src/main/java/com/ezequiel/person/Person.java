@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -16,13 +17,16 @@ public class Person extends RepresentationModel<Person> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(length = 200, nullable = false)
+    @Column(name = "name", length = 200, nullable = false)
     private String name;
 
+    @Column(name = "cpf")
     private String cpf;
 
-    private Date dataNascimento;
+    @Column(name = "dataNascimento")
+    private LocalDate dataNascimento;
 
+    @Column(name = "sexo")
     private Sexo sexo;
 }
 

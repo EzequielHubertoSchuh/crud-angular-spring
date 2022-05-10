@@ -14,10 +14,10 @@ public class Course extends RepresentationModel<Course> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(length = 200, nullable = false)
+    @Column(name = "name", length = 200, nullable = false)
     private String name;
 
-    @Column(length = 10, nullable = false)
+    @Column(name = "category",length = 10, nullable = false)
     private String category;
 
 }

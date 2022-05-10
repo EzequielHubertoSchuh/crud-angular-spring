@@ -21,6 +21,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/api/person")
 @AllArgsConstructor
 @Api(value = "API REST-FULL")
+@Transactional
 public class PersonController {
 
     @Autowired
@@ -54,14 +55,12 @@ public class PersonController {
     }
 
     @ApiOperation(value = "Save a person")
-    @Transactional
     @PostMapping
     public ResponseEntity<Person> savePerson(@RequestBody @Validated Person person) {
         return new ResponseEntity<Person>(personRepository.save(person), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Delete a person")
-    @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePerson(@PathVariable(value = "id") long id){
         Optional<Person> personO = Optional.ofNullable(personRepository.findById(id));
@@ -74,7 +73,6 @@ public class PersonController {
     }
 
     @ApiOperation(value = "Update a person")
-    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<Person> updatePerson(@PathVariable(value="id") long id,
                                                @RequestBody @Validated Person person) {

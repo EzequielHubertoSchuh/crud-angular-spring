@@ -21,6 +21,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/api/courses")
 @AllArgsConstructor
 @Api(value = "API REST-FULL")
+@Transactional
 public class CourseController {
 
     @Autowired
@@ -54,14 +55,12 @@ public class CourseController {
     }
 
     @ApiOperation(value = "Save a course")
-    @Transactional
     @PostMapping
     public ResponseEntity<Course> saveCourse(@RequestBody @Validated Course course) {
         return new ResponseEntity<Course>(courseRepository.save(course), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Delete a course")
-    @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCourse(@PathVariable(value = "id") long id){
         Optional<Course> courseO = Optional.ofNullable(courseRepository.findById(id));
@@ -74,7 +73,6 @@ public class CourseController {
     }
 
     @ApiOperation(value = "Update a course")
-    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable(value="id") long id,
                                                       @RequestBody @Validated Course course) {
