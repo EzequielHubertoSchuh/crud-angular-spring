@@ -1,5 +1,6 @@
-package com.ezequiel.course;
+package com.ezequiel.city;
 
+import com.ezequiel.federativeUnit.FederativeUnit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "course")
-public class Course extends RepresentationModel<Course> {
-    
+@Table(name = "city")
+public class City extends RepresentationModel<City> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,7 +24,6 @@ public class Course extends RepresentationModel<Course> {
     @Column(name = "name", length = 200, nullable = false)
     private String name;
 
-    @Column(name = "category",length = 10, nullable = false)
-    private String category;
-
+    @ManyToOne
+    private FederativeUnit federativeUnit;
 }

@@ -42,7 +42,7 @@ public class CourseController {
         }
     }
 
-    @ApiOperation(value = "Returns a single course")
+    @ApiOperation(value = "Return a single course")
     @GetMapping("/{id}")
     public ResponseEntity<Course> singleCourse(@PathVariable(value = "id") long id) {
         Optional<Course> courseO = Optional.ofNullable(courseRepository.findById(id));
