@@ -42,7 +42,7 @@ public class PersonController {
         }
     }
 
-    @ApiOperation(value = "Returns a single person")
+    @ApiOperation(value = "Return a single person")
     @GetMapping("/{id}")
     public ResponseEntity<Person> singlePerson(@PathVariable(value = "id") long id) {
         Optional<Person> personO = Optional.ofNullable(personRepository.findById(id));
