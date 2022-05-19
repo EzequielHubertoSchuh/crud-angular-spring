@@ -11,13 +11,12 @@ import { CoursesService } from './../services/courses.service';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-
   courses$: Observable<Course[]>;
 
-  displayedColumns = ['_id','name','category','actions'];
+  displayedColumns = ['_id', 'name', 'category', 'actions'];
 
   constructor(
     private coursesService: CoursesService,
@@ -25,31 +24,25 @@ export class CoursesComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.courses$ = this.coursesService.list()
-    .pipe(
-      catchError(error => {
+    this.courses$ = this.coursesService.list().pipe(
+      catchError((error) => {
         this.onError('Erro ao carregar cursos.');
-        return of([])
+        return of([]);
       })
     );
   }
 
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
-      data: errorMsg
+      data: errorMsg,
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+  onAdd() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 
-  onAdd(){
-    this.router.navigate(['new'], {relativeTo:this.route});
-  }
-
-  onDelete(){
-
-  }
-
+  onDelete() {}
 }
