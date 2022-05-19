@@ -1,8 +1,5 @@
 package com.ezequiel.city;
 
-import com.ezequiel.course.Course;
-import com.ezequiel.course.CourseController;
-import com.ezequiel.course.CourseRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

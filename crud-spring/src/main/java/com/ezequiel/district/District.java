@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -20,9 +21,11 @@ public class District extends RepresentationModel<District> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     @Column(name = "name", length = 200, nullable = false)
     private String name;
 
+    @NotNull
     @ManyToOne
     private City city;
 }

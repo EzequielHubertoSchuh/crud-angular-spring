@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -20,9 +21,11 @@ public class FederativeUnit extends RepresentationModel<FederativeUnit> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
     @Column(name = "name", length = 200, nullable = false)
     private String name;
 
+    @NotBlank
     @Column(name = "uf", length = 2, nullable = false)
     private String uf;
 }

@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -20,9 +22,11 @@ public class Course extends RepresentationModel<Course> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
     @Column(name = "name", length = 200, nullable = false)
     private String name;
 
+    @NotNull
     @Column(name = "category",length = 10, nullable = false)
     private String category;
 
