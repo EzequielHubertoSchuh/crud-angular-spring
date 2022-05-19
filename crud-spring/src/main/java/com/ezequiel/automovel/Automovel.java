@@ -22,7 +22,6 @@ import java.math.BigDecimal;
 @Table(name = "automovel")
 public class Automovel extends RepresentationModel<Automovel> {
 
-
     @Id
     @GeneratedValue
     private Integer id;
