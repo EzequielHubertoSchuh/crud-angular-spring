@@ -10,10 +10,12 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,

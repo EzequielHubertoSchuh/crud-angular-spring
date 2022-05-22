@@ -54,7 +54,16 @@
 			<optional>true</optional>
 		</dependency>
 
-<!--		<dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.javamoney/moneta -->
+		<dependency>
+			<groupId>org.javamoney</groupId>
+			<artifactId>moneta</artifactId>
+			<version>1.4.2</version>
+			<type>pom</type>
+		</dependency>
+
+
+		<!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-starter-security</artifactId>-->
 <!--		</dependency>-->
