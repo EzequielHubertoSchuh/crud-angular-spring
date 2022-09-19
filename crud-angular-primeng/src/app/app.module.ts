@@ -10,12 +10,11 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
-import { CoursesComponent } from './courses/courses.component';
+import {PaginatorModule} from 'primeng/paginator';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CoursesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +25,8 @@ import { CoursesComponent } from './courses/courses.component';
     CheckboxModule,
     ColorPickerModule,
     DropdownModule,
-    InputMaskModule
+    InputMaskModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
